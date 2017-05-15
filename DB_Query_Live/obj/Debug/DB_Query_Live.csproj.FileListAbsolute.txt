@@ -1,0 +1,16 @@
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\bin\Debug\DB_Query_Live.exe.config
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\bin\Debug\DB_Query_Live.exe
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\bin\Debug\DB_Query_Live.pdb
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\bin\Debug\Dapper.dll
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\bin\Debug\Dapper.xml
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\DB_Query_Live.csprojResolveAssemblyReference.cache
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\MainWindow.g.cs
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\App.g.cs
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\DB_Query_Live_MarkupCompile.cache
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\DB_Query_Live_MarkupCompile.lref
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\MainWindow.baml
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\DB_Query_Live.g.resources
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\DB_Query_Live.Properties.Resources.resources
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\DB_Query_Live.csproj.GenerateResource.Cache
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\DB_Query_Live.exe
+c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\DB_Query_Live.pdb
