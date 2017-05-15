@@ -14,3 +14,20 @@ c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Li
 c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\DB_Query_Live.csproj.GenerateResource.Cache
 c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\DB_Query_Live.exe
 c:\users\chenken\documents\visual studio 2017\Projects\DB_Query_Live\DB_Query_Live\obj\Debug\DB_Query_Live.pdb
+D:\GitLab\QueryDB_live\DB_Query_Live\bin\Debug\DB_Query_Live.exe.config
+D:\GitLab\QueryDB_live\DB_Query_Live\bin\Debug\DB_Query_Live.exe
+D:\GitLab\QueryDB_live\DB_Query_Live\bin\Debug\DB_Query_Live.pdb
+D:\GitLab\QueryDB_live\DB_Query_Live\bin\Debug\Dapper.dll
+D:\GitLab\QueryDB_live\DB_Query_Live\bin\Debug\Dapper.Fluent.dll
+D:\GitLab\QueryDB_live\DB_Query_Live\bin\Debug\Dapper.xml
+D:\GitLab\QueryDB_live\DB_Query_Live\obj\Debug\DB_Query_Live.csprojResolveAssemblyReference.cache
+D:\GitLab\QueryDB_live\DB_Query_Live\obj\Debug\MainWindow.g.cs
+D:\GitLab\QueryDB_live\DB_Query_Live\obj\Debug\App.g.cs
+D:\GitLab\QueryDB_live\DB_Query_Live\obj\Debug\DB_Query_Live_MarkupCompile.cache
+D:\GitLab\QueryDB_live\DB_Query_Live\obj\Debug\DB_Query_Live_MarkupCompile.lref
+D:\GitLab\QueryDB_live\DB_Query_Live\obj\Debug\MainWindow.baml
+D:\GitLab\QueryDB_live\DB_Query_Live\obj\Debug\DB_Query_Live.g.resources
+D:\GitLab\QueryDB_live\DB_Query_Live\obj\Debug\DB_Query_Live.Properties.Resources.resources
+D:\GitLab\QueryDB_live\DB_Query_Live\obj\Debug\DB_Query_Live.csproj.GenerateResource.Cache
+D:\GitLab\QueryDB_live\DB_Query_Live\obj\Debug\DB_Query_Live.exe
+D:\GitLab\QueryDB_live\DB_Query_Live\obj\Debug\DB_Query_Live.pdb

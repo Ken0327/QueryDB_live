@@ -41,10 +41,12 @@ namespace DB_Query_Live
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var sqlx = $"SELECT count(*) as TotalCount FROM [SMTrealTimeT1].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30' "
-                        + $"SELECT count(*) as TotalCount FROM [SMTrealTimeT2].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30' "
-                        + $"SELECT count(*) as TotalCount FROM [SMTrealTime1].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30' "
-                        + $"SELECT count(*) as TotalCount FROM [SMTrealTime3].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30' ";
+            dt_min = datetime_min.Text;
+            dt_max = datetime_max.Text;
+            var sqlx = $"SELECT count(*) as TotalCount FROM [SMTrealTimeT1].[dbo].[PdCount2] where datetimes > '{dt_min}' "
+                        + $"SELECT count(*) as TotalCount FROM [SMTrealTimeT2].[dbo].[PdCount2] where datetimes > '{dt_min}' "
+                        + $"SELECT count(*) as TotalCount FROM [SMTrealTime1].[dbo].[PdCount2] where datetimes > '{dt_min}' "
+                        + $"SELECT count(*) as TotalCount FROM [SMTrealTime3].[dbo].[PdCount2] where datetimes > '{dt_min}' ";
 
             var resultReclist = QuerSQL_Test(sqlx, conStr_Test);
             Text_PdCount2_T1.Text = resultReclist?.ElementAtOrDefault(0).Rows[0].ItemArray[0].ToString();
@@ -52,10 +54,10 @@ namespace DB_Query_Live
             Text_PdCount2_T3_3.Text = resultReclist?.ElementAtOrDefault(2).Rows[0].ItemArray[0].ToString();
             Text_PdCount2_T3_5.Text = resultReclist?.ElementAtOrDefault(3).Rows[0].ItemArray[0].ToString();
 
-            var sql1t1x = "SELECT count(*) as TotalCount FROM [SMTrealTime].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30' ";
-            var sql1t2x = "SELECT count(*) as TotalCount FROM [SMTrealTime].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30' ";
-            var sql1t33x = "SELECT count(*) as TotalCount FROM [SMTrealTime1].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30' ";
-            var sql1t35x = "SELECT count(*) as TotalCount FROM [SMTrealTime3].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30' ";
+            var sql1t1x = $"SELECT count(*) as TotalCount FROM [SMTrealTime].[dbo].[PdCount2] where datetimes > '{dt_min}' ";
+            var sql1t2x = $"SELECT count(*) as TotalCount FROM [SMTrealTime].[dbo].[PdCount2] where datetimes > '{dt_min}' ";
+            var sql1t33x = $"SELECT count(*) as TotalCount FROM [SMTrealTime1].[dbo].[PdCount2] where datetimes > '{dt_min}' ";
+            var sql1t35x = $"SELECT count(*) as TotalCount FROM [SMTrealTime3].[dbo].[PdCount2] where datetimes > '{dt_min}' ";
 
             Text1_PdCount2_T1.Text = QuerSQL(sql1t1x, conStr_T1).Rows[0].ItemArray[0].ToString();
             Text1_PdCount2_T2.Text = QuerSQL(sql1t2x, conStr_T2).Rows[0].ItemArray[0].ToString();
@@ -103,17 +105,17 @@ namespace DB_Query_Live
 
         private void SQL(string dtmin, string dtmax)
         {
-            sqlt1 = "SELECT * From(Select count(*) as PDcount2 FROM[SMTrealTimeT1].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30') as A, "
-            + " (Select count(*) as RecipeChg FROM[SMTrealTimeT1].[dbo].[RecipeChg] where datetimes > '2017-05-15 11:30' ) as B, "
-            + " (Select count(*) as BoardCount FROM[SMTrealTimeT1].[dbo].BoardCount where datetimes > '2017-05-15 11:30' ) as C, "
-            + " (Select count(*) as McStatus FROM[SMTrealTimeT1].[dbo].McStatus where datetimes > '2017-05-15 11:30' ) as D,"
-            + " (Select count(*) as ProdStart FROM[SMTrealTimeT1].[dbo].ProdStart where datetimes > '2017-05-15 11:30' ) as E,"
-            + " (Select count(*) as ProdEnd FROM[SMTrealTimeT1].[dbo].[ProdEnd] where datetimes > '2017-05-15 11:30' ) as F,"
-            + " (Select count(*) as ProdStop FROM[SMTrealTimeT1].[dbo].[ProdStop] where datetimes > '2017-05-15 11:30' ) as G,"
-            + " (Select count(*) as PdError FROM[SMTrealTimeT1].[dbo].[PdError] where datetimes > '2017-05-15 11:30' ) as H,"
-            + " (Select count(*) as [RecipeDel] FROM[SMTrealTimeT1].[dbo].[RecipeDel] where datetimes > '2017-05-15 11:30' ) as I,"
-            + " (Select count(*) as [ConnectOff] FROM[SMTrealTimeT1].[dbo].[ConnectOff] where datetimes > '2017-05-15 11:30' ) as J,"
-            + " (Select count(*) as [AAmode] FROM[SMTrealTimeT1].[dbo].[AAmode] where datetimes > '2017-05-15 11:30' ) as K"
+            sqlt1 = $"SELECT * From(Select count(*) as PDcount2 FROM[SMTrealTimeT1].[dbo].[PdCount2] where datetimes > '{dtmin}') as A, "
+            + $" (Select count(*) as RecipeChg FROM[SMTrealTimeT1].[dbo].[RecipeChg] where datetimes > '{dtmin}' ) as B, "
+            + $" (Select count(*) as BoardCount FROM[SMTrealTimeT1].[dbo].BoardCount where datetimes > '{dtmin}') as C, "
+            + $" (Select count(*) as McStatus FROM[SMTrealTimeT1].[dbo].McStatus where datetimes > '{dtmin}' ) as D,"
+            + $" (Select count(*) as ProdStart FROM[SMTrealTimeT1].[dbo].ProdStart where datetimes > '{dtmin}' ) as E,"
+            + $" (Select count(*) as ProdEnd FROM[SMTrealTimeT1].[dbo].[ProdEnd] where datetimes > '{dtmin}' ) as F,"
+            + $" (Select count(*) as ProdStop FROM[SMTrealTimeT1].[dbo].[ProdStop] where datetimes > '{dtmin}' ) as G,"
+            + $" (Select count(*) as PdError FROM[SMTrealTimeT1].[dbo].[PdError] where datetimes > '{dtmin}' ) as H,"
+            + $" (Select count(*) as [RecipeDel] FROM[SMTrealTimeT1].[dbo].[RecipeDel] where datetimes > '{dtmin}' ) as I,"
+            + $" (Select count(*) as [ConnectOff] FROM[SMTrealTimeT1].[dbo].[ConnectOff] where datetimes > '{dtmin}' ) as J,"
+            + $" (Select count(*) as [AAmode] FROM[SMTrealTimeT1].[dbo].[AAmode] where datetimes > '{dtmin}' ) as K"
 
             + $" SELECT* From(Select count(*) as PDcount2 FROM[SMTrealTimeT1].[dbo].[PdCount2] where datetimes between '{dtmin}'  and '{dtmax}' ) as A,"
             + $" (Select count(*) as RecipeChg FROM[SMTrealTimeT1].[dbo].[RecipeChg] where datetimes between '{dtmin}'  and '{dtmax}' ) as B,"
@@ -127,17 +129,18 @@ namespace DB_Query_Live
             + $" (Select count(*) as [ConnectOff] FROM[SMTrealTimeT1].[dbo].[ConnectOff] where datetimes between '{dtmin}'  and '{dtmax}'  ) as J,"
             + $" (Select count(*) as [AAmode] FROM[SMTrealTimeT1].[dbo].[AAmode] where datetimes between '{dtmin}'  and '{dtmax}' ) as K ";
 
-            sql = "SELECT * From(Select count(*) as PDcount2 FROM[SMTrealTime].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30') as A, "
-            + " (Select count(*) as RecipeChg FROM[SMTrealTime].[dbo].[RecipeChg] where datetimes > '2017-05-15 11:30' ) as B, "
-            + " (Select count(*) as BoardCount FROM[SMTrealTime].[dbo].BoardCount where datetimes > '2017-05-15 11:30' ) as C, "
-            + " (Select count(*) as McStatus FROM[SMTrealTime].[dbo].McStatus where datetimes > '2017-05-15 11:30' ) as D,"
-            + " (Select count(*) as ProdStart FROM[SMTrealTime].[dbo].ProdStart where datetimes > '2017-05-15 11:30' ) as E,"
-            + " (Select count(*) as ProdEnd FROM[SMTrealTime].[dbo].[ProdEnd] where datetimes > '2017-05-15 11:30' ) as F,"
-            + " (Select count(*) as ProdStop FROM[SMTrealTime].[dbo].[ProdStop] where datetimes > '2017-05-15 11:30' ) as G,"
-            + " (Select count(*) as PdError FROM[SMTrealTime].[dbo].[PdError] where datetimes > '2017-05-15 11:30' ) as H,"
-            + " (Select count(*) as [RecipeDel] FROM[SMTrealTime].[dbo].[RecipeDel] where datetimes > '2017-05-15 11:30' ) as I,"
-            + " (Select count(*) as [ConnectOff] FROM[SMTrealTime].[dbo].[ConnectOff] where datetimes > '2017-05-15 11:30' ) as J,"
-            + " (Select count(*) as [AAmode] FROM[SMTrealTime].[dbo].[AAmode] where datetimes > '2017-05-15 11:30' ) as K"
+            sql = $"SELECT * From(Select count(*) as PDcount2 FROM[SMTrealTime].[dbo].[PdCount2] where datetimes > '{dtmin}') as A, "
+            + $" (Select count(*) as RecipeChg FROM[SMTrealTime].[dbo].[RecipeChg] where datetimes > '{dtmin}' ) as B, "
+            + $" (Select count(*) as BoardCount FROM[SMTrealTime].[dbo].BoardCount where datetimes > '{dtmin}') as C, "
+            + $" (Select count(*) as McStatus FROM[SMTrealTime].[dbo].McStatus where datetimes > '{dtmin}' ) as D,"
+            + $" (Select count(*) as ProdStart FROM[SMTrealTime].[dbo].ProdStart where datetimes > '{dtmin}' ) as E,"
+            + $" (Select count(*) as ProdEnd FROM[SMTrealTime].[dbo].[ProdEnd] where datetimes > '{dtmin}' ) as F,"
+            + $" (Select count(*) as ProdStop FROM[SMTrealTime].[dbo].[ProdStop] where datetimes > '{dtmin}' ) as G,"
+            + $" (Select count(*) as PdError FROM[SMTrealTime].[dbo].[PdError] where datetimes > '{dtmin}' ) as H,"
+            + $" (Select count(*) as [RecipeDel] FROM[SMTrealTime].[dbo].[RecipeDel] where datetimes > '{dtmin}' ) as I,"
+            + $" (Select count(*) as [ConnectOff] FROM[SMTrealTime].[dbo].[ConnectOff] where datetimes > '{dtmin}' ) as J,"
+            + $" (Select count(*) as [AAmode] FROM[SMTrealTime].[dbo].[AAmode] where datetimes > '{dtmin}' ) as K"
+
 
             + $"  SELECT* From(Select count(*) as PDcount2 FROM[SMTrealTime].[dbo].[PdCount2] where datetimes between '{dtmin}'  and '{dtmax}') as A,"
             + $" (Select count(*) as RecipeChg FROM[SMTrealTime].[dbo].[RecipeChg] where datetimes between '{dtmin}'  and '{dtmax}') as B,"
@@ -152,17 +155,18 @@ namespace DB_Query_Live
             + $" (Select count(*) as [AAmode] FROM[SMTrealTime].[dbo].[AAmode] where datetimes between '{dtmin}'  and '{dtmax}' ) as K ";
 
             //T2
-            sqlt2 = "SELECT * From(Select count(*) as PDcount2 FROM[SMTrealTimeT2].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30') as A, "
-            + " (Select count(*) as RecipeChg FROM[SMTrealTimeT2].[dbo].[RecipeChg] where datetimes > '2017-05-15 11:30' ) as B, "
-            + " (Select count(*) as BoardCount FROM[SMTrealTimeT2].[dbo].BoardCount where datetimes > '2017-05-15 11:30' ) as C, "
-            + " (Select count(*) as McStatus FROM[SMTrealTimeT2].[dbo].McStatus where datetimes > '2017-05-15 11:30' ) as D,"
-            + " (Select count(*) as ProdStart FROM[SMTrealTimeT2].[dbo].ProdStart where datetimes > '2017-05-15 11:30' ) as E,"
-            + " (Select count(*) as ProdEnd FROM[SMTrealTimeT2].[dbo].[ProdEnd] where datetimes > '2017-05-15 11:30' ) as F,"
-            + " (Select count(*) as ProdStop FROM[SMTrealTimeT2].[dbo].[ProdStop] where datetimes > '2017-05-15 11:30' ) as G,"
-            + " (Select count(*) as PdError FROM[SMTrealTimeT2].[dbo].[PdError] where datetimes > '2017-05-15 11:30' ) as H,"
-            + " (Select count(*) as [RecipeDel] FROM[SMTrealTimeT2].[dbo].[RecipeDel] where datetimes > '2017-05-15 11:30' ) as I,"
-            + " (Select count(*) as [ConnectOff] FROM[SMTrealTimeT2].[dbo].[ConnectOff] where datetimes > '2017-05-15 11:30' ) as J,"
-            + " (Select count(*) as [AAmode] FROM[SMTrealTimeT2].[dbo].[AAmode] where datetimes > '2017-05-15 11:30' ) as K"
+            sqlt2 = $"SELECT * From(Select count(*) as PDcount2 FROM[SMTrealTimeT2].[dbo].[PdCount2] where datetimes > '{dtmin}') as A, "
+            + $" (Select count(*) as RecipeChg FROM[SMTrealTimeT2].[dbo].[RecipeChg] where datetimes > '{dtmin}' ) as B, "
+            + $" (Select count(*) as BoardCount FROM[SMTrealTimeT2].[dbo].BoardCount where datetimes > '{dtmin}') as C, "
+            + $" (Select count(*) as McStatus FROM[SMTrealTimeT2].[dbo].McStatus where datetimes > '{dtmin}' ) as D,"
+            + $" (Select count(*) as ProdStart FROM[SMTrealTimeT2].[dbo].ProdStart where datetimes > '{dtmin}' ) as E,"
+            + $" (Select count(*) as ProdEnd FROM[SMTrealTimeT2].[dbo].[ProdEnd] where datetimes > '{dtmin}' ) as F,"
+            + $" (Select count(*) as ProdStop FROM[SMTrealTimeT2].[dbo].[ProdStop] where datetimes > '{dtmin}' ) as G,"
+            + $" (Select count(*) as PdError FROM[SMTrealTimeT2].[dbo].[PdError] where datetimes > '{dtmin}' ) as H,"
+            + $" (Select count(*) as [RecipeDel] FROM[SMTrealTimeT2].[dbo].[RecipeDel] where datetimes > '{dtmin}' ) as I,"
+            + $" (Select count(*) as [ConnectOff] FROM[SMTrealTimeT2].[dbo].[ConnectOff] where datetimes > '{dtmin}' ) as J,"
+            + $" (Select count(*) as [AAmode] FROM[SMTrealTimeT2].[dbo].[AAmode] where datetimes > '{dtmin}' ) as K"
+
 
             + $"  SELECT* From(Select count(*) as PDcount2 FROM[SMTrealTimeT2].[dbo].[PdCount2] where datetimes between '{dtmin}'  and '{dtmax}') as A,"
             + $" (Select count(*) as RecipeChg FROM[SMTrealTimeT2].[dbo].[RecipeChg] where datetimes between '{dtmin}'  and '{dtmax}') as B,"
@@ -177,17 +181,17 @@ namespace DB_Query_Live
             + $" (Select count(*) as [AAmode] FROM[SMTrealTimeT2].[dbo].[AAmode] where datetimes between '{dtmin}'  and '{dtmax}' ) as K ";
 
             //T3_3
-            sqlt33 = "SELECT * From(Select count(*) as PDcount2 FROM[SMTrealTime1].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30') as A, "
-                        + " (Select count(*) as RecipeChg FROM[SMTrealTime1].[dbo].[RecipeChg] where datetimes > '2017-05-15 11:30' ) as B, "
-                        + " (Select count(*) as BoardCount FROM[SMTrealTime1].[dbo].BoardCount where datetimes > '2017-05-15 11:30' ) as C, "
-                        + " (Select count(*) as McStatus FROM[SMTrealTime1].[dbo].McStatus where datetimes > '2017-05-15 11:30' ) as D,"
-                        + " (Select count(*) as ProdStart FROM[SMTrealTime1].[dbo].ProdStart where datetimes > '2017-05-15 11:30' ) as E,"
-                        + " (Select count(*) as ProdEnd FROM[SMTrealTime1].[dbo].[ProdEnd] where datetimes > '2017-05-15 11:30' ) as F,"
-                        + " (Select count(*) as ProdStop FROM[SMTrealTime1].[dbo].[ProdStop] where datetimes > '2017-05-15 11:30' ) as G,"
-                        + " (Select count(*) as PdError FROM[SMTrealTime1].[dbo].[PdError] where datetimes > '2017-05-15 11:30' ) as H,"
-                        + " (Select count(*) as [RecipeDel] FROM[SMTrealTime1].[dbo].[RecipeDel] where datetimes > '2017-05-15 11:30' ) as I,"
-                        + " (Select count(*) as [ConnectOff] FROM[SMTrealTime1].[dbo].[ConnectOff] where datetimes > '2017-05-15 11:30' ) as J,"
-                        + " (Select count(*) as [AAmode] FROM[SMTrealTime1].[dbo].[AAmode] where datetimes > '2017-05-15 11:30' ) as K"
+            sqlt33 = $"SELECT * From(Select count(*) as PDcount2 FROM[SMTrealTime1].[dbo].[PdCount2] where datetimes > '{dtmin}') as A, "
+            + $" (Select count(*) as RecipeChg FROM[SMTrealTime1].[dbo].[RecipeChg] where datetimes > '{dtmin}' ) as B, "
+            + $" (Select count(*) as BoardCount FROM[SMTrealTime1].[dbo].BoardCount where datetimes > '{dtmin}') as C, "
+            + $" (Select count(*) as McStatus FROM[SMTrealTime1].[dbo].McStatus where datetimes > '{dtmin}' ) as D,"
+            + $" (Select count(*) as ProdStart FROM[SMTrealTime1].[dbo].ProdStart where datetimes > '{dtmin}' ) as E,"
+            + $" (Select count(*) as ProdEnd FROM[SMTrealTime1].[dbo].[ProdEnd] where datetimes > '{dtmin}' ) as F,"
+            + $" (Select count(*) as ProdStop FROM[SMTrealTime1].[dbo].[ProdStop] where datetimes > '{dtmin}' ) as G,"
+            + $" (Select count(*) as PdError FROM[SMTrealTime1].[dbo].[PdError] where datetimes > '{dtmin}' ) as H,"
+            + $" (Select count(*) as [RecipeDel] FROM[SMTrealTime1].[dbo].[RecipeDel] where datetimes > '{dtmin}' ) as I,"
+            + $" (Select count(*) as [ConnectOff] FROM[SMTrealTime1].[dbo].[ConnectOff] where datetimes > '{dtmin}' ) as J,"
+            + $" (Select count(*) as [AAmode] FROM[SMTrealTime1].[dbo].[AAmode] where datetimes > '{dtmin}' ) as K"
 
                         + $"  SELECT* From(Select count(*) as PDcount2 FROM[SMTrealTime1].[dbo].[PdCount2] where datetimes between '{dtmin}'  and '{dtmax}') as A,"
                         + $" (Select count(*) as RecipeChg FROM[SMTrealTime1].[dbo].[RecipeChg] where datetimes between '{dtmin}'  and '{dtmax}') as B,"
@@ -201,17 +205,18 @@ namespace DB_Query_Live
                         + $" (Select count(*) as [ConnectOff] FROM[SMTrealTime1].[dbo].[ConnectOff] where datetimes between '{dtmin}'  and '{dtmax}') as J,"
                         + $" (Select count(*) as [AAmode] FROM[SMTrealTime1].[dbo].[AAmode] where datetimes between '{dtmin}'  and '{dtmax}' ) as K ";
             //T3_5
-            sqlt35 = "SELECT * From(Select count(*) as PDcount2 FROM[SMTrealTime3].[dbo].[PdCount2] where datetimes > '2017-05-15 11:30') as A, "
-            + " (Select count(*) as RecipeChg FROM[SMTrealTime3].[dbo].[RecipeChg] where datetimes > '2017-05-15 11:30' ) as B, "
-            + " (Select count(*) as BoardCount FROM[SMTrealTime3].[dbo].BoardCount where datetimes > '2017-05-15 11:30' ) as C, "
-            + " (Select count(*) as McStatus FROM[SMTrealTime3].[dbo].McStatus where datetimes > '2017-05-15 11:30' ) as D,"
-            + " (Select count(*) as ProdStart FROM[SMTrealTime3].[dbo].ProdStart where datetimes > '2017-05-15 11:30' ) as E,"
-            + " (Select count(*) as ProdEnd FROM[SMTrealTime3].[dbo].[ProdEnd] where datetimes > '2017-05-15 11:30' ) as F,"
-            + " (Select count(*) as ProdStop FROM[SMTrealTime3].[dbo].[ProdStop] where datetimes > '2017-05-15 11:30' ) as G,"
-            + " (Select count(*) as PdError FROM[SMTrealTime3].[dbo].[PdError] where datetimes > '2017-05-15 11:30' ) as H,"
-            + " (Select count(*) as [RecipeDel] FROM[SMTrealTime3].[dbo].[RecipeDel] where datetimes > '2017-05-15 11:30' ) as I,"
-            + " (Select count(*) as [ConnectOff] FROM[SMTrealTime3].[dbo].[ConnectOff] where datetimes > '2017-05-15 11:30' ) as J,"
-            + " (Select count(*) as [AAmode] FROM[SMTrealTime3].[dbo].[AAmode] where datetimes > '2017-05-15 11:30' ) as K"
+            sqlt35 = $"SELECT * From(Select count(*) as PDcount2 FROM[SMTrealTime3].[dbo].[PdCount2] where datetimes > '{dtmin}') as A, "
+            + $" (Select count(*) as RecipeChg FROM[SMTrealTime3].[dbo].[RecipeChg] where datetimes > '{dtmin}' ) as B, "
+            + $" (Select count(*) as BoardCount FROM[SMTrealTime3].[dbo].BoardCount where datetimes > '{dtmin}') as C, "
+            + $" (Select count(*) as McStatus FROM[SMTrealTime3].[dbo].McStatus where datetimes > '{dtmin}' ) as D,"
+            + $" (Select count(*) as ProdStart FROM[SMTrealTime3].[dbo].ProdStart where datetimes > '{dtmin}' ) as E,"
+            + $" (Select count(*) as ProdEnd FROM[SMTrealTime3].[dbo].[ProdEnd] where datetimes > '{dtmin}' ) as F,"
+            + $" (Select count(*) as ProdStop FROM[SMTrealTime3].[dbo].[ProdStop] where datetimes > '{dtmin}' ) as G,"
+            + $" (Select count(*) as PdError FROM[SMTrealTime3].[dbo].[PdError] where datetimes > '{dtmin}' ) as H,"
+            + $" (Select count(*) as [RecipeDel] FROM[SMTrealTime3].[dbo].[RecipeDel] where datetimes > '{dtmin}' ) as I,"
+            + $" (Select count(*) as [ConnectOff] FROM[SMTrealTime3].[dbo].[ConnectOff] where datetimes > '{dtmin}' ) as J,"
+            + $" (Select count(*) as [AAmode] FROM[SMTrealTime3].[dbo].[AAmode] where datetimes > '{dtmin}' ) as K"
+
 
             + $"  SELECT* From(Select count(*) as PDcount2 FROM[SMTrealTime3].[dbo].[PdCount2] where datetimes between '{dtmin}'  and '{dtmax}') as A,"
             + $" (Select count(*) as RecipeChg FROM[SMTrealTime3].[dbo].[RecipeChg] where datetimes between '{dtmin}'  and '{dtmax}' ) as B,"
